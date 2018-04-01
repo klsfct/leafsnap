@@ -29,6 +29,7 @@ Route::get('/', "\App\Http\Controllers\LoginController@index");
     Route::get('/posts/{post}/unzan', '\App\Http\Controllers\PostController@unzan');
 
     // 个人主页
+    Route::post('/user/leafSnap', '\App\Http\Controllers\UserController@leaf');
     Route::get('/user/{user}', '\App\Http\Controllers\UserController@show');
     Route::post('/user/{user}/fan', '\App\Http\Controllers\UserController@fan');
     Route::post('/user/{user}/unfan', '\App\Http\Controllers\UserController@unfan');
@@ -38,7 +39,7 @@ Route::get('/', "\App\Http\Controllers\LoginController@index");
 
     // 个人设置
     Route::get('/user/{user}/setting', '\App\Http\Controllers\UserController@setting');
-    Route::post('/user/{user}/setting', '\App\Http\Controllers\UserController@settingStore');
+    Route::post('/user/{user}/setting', '\App\Http\Controllers\UserController@leaf');
 
     // 专题
     Route::get('/topic/{topic}', '\App\Http\Controllers\TopicController@show');
