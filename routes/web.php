@@ -39,7 +39,7 @@ Route::get('/', "\App\Http\Controllers\LoginController@index");
 
     // 个人设置
     Route::get('/user/{user}/setting', '\App\Http\Controllers\UserController@setting');
-    Route::post('/user/{user}/setting', '\App\Http\Controllers\UserController@leaf');
+    Route::post('/user/{user}/setting', '\App\Http\Controllers\UserController@settingStore');
 
     // 专题
     Route::get('/topic/{topic}', '\App\Http\Controllers\TopicController@show');
