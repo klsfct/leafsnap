@@ -86,7 +86,7 @@ class UserController extends Controller
 
 //        $client = new AipImageClassify(env('BAIDU_ID'), env('BAIDU_KEY'), env('BAIDU_SECRET'));
 //        $result = $client->dishDetect($request->file('file'));
-        $path = $request->file('avatarUrl')->storePublicly(md5(\Auth::id() . time()));
+        $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
 //        return asset('/storage/'. $path);
         function request_post($url = '', $param = '') {
             if (empty($url) || empty($param)) {
