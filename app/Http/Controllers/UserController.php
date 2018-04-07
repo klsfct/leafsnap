@@ -80,7 +80,7 @@ class UserController extends Controller
         return back();
     }
 
-    function request_post($url = '', $param = '') {
+    public function request_post($url = '', $param = '') {
         if (empty($url) || empty($param)) {
             return false;
         }
