@@ -138,7 +138,7 @@ class UserController extends Controller
     }
 
     public function shareIndex(LeafsnapRes $leafsnapRes){
-        $leafsnapRes = LeafsnapRes::where('log_id', $leafsnapRes->id)->get();
+        $leafsnapRes = LeafsnapRes::find($leafsnapRes->id);
         return compact('leafsnapRes');
     }
 }
