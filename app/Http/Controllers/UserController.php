@@ -129,7 +129,7 @@ class UserController extends Controller
         $res = json_decode(request_post($url, $bodys), true);
 
         $leafsnapRes = new LeafsnapRes();
-        $leafsnapRes->imgUrl = $path;
+        $leafsnapRes->imgUrl = asset('/storage/'. $path);
         $leafsnapRes->res = $res;
         $leafsnapRes->create();
 
