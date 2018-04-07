@@ -133,7 +133,7 @@ class UserController extends Controller
         $leafsnapRes->res = $res;
         $leafsnapRes->create();
 
-        return compact('leafsnapRes');
+        return compact('res', 'leafsnapRes');
     }
 
     public function shareIndex(LeafsnapRes $leafsnapRes){
