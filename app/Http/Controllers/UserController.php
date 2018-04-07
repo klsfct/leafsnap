@@ -131,12 +131,10 @@ class UserController extends Controller
 //        $leafsnapRes = new LeafsnapRes();
         $imgUrl = asset('/storage/'. $path);
 //        $leafsnapRes->res = $res;
-        $params = array_merge(['log_id'=> $res['log_id']], ['imgUrl' => asset('/storage/'. $path)], ['res' => json_encode($res['result'], true)]);
-        LeafsnapRes::create($params);
-        $log_id = $res['log_id'];
+        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => json_encode($res['result'], true)]);
+        $id = LeafsnapRes::getInsertId($params);
 
-//        return compact('log_id', 'res', 'imgUrl');
-        return $log_id;
+        return compact('id', 'res', 'imgUrl');
     }
 
     public function shareIndex(LeafsnapRes $leafsnapRes){

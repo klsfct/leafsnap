@@ -41,8 +41,8 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="138" column="23" lean-forward="true" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
+            <state relative-caret-position="406">
+              <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
               </folding>
@@ -502,12 +502,12 @@
       <workItem from="1522598243840" duration="3275000" />
       <workItem from="1522678602239" duration="2793000" />
       <workItem from="1522772148745" duration="1621000" />
-      <workItem from="1523084716377" duration="8709000" />
+      <workItem from="1523084716377" duration="9102000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="378909000" />
+    <option name="totallyTimeSpent" value="379302000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -932,8 +932,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="138" column="23" lean-forward="true" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
+        <state relative-caret-position="406">
+          <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>
