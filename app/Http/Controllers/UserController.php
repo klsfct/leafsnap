@@ -131,7 +131,7 @@ class UserController extends Controller
         $leafsnapRes = new LeafsnapRes();
         $leafsnapRes->imgUrl = $path;
         $leafsnapRes->res = $res;
-        LeafsnapRes::create($leafsnapRes);
+        $leafsnapRes->create();
 
         return compact('leafsnapRes');
     }
