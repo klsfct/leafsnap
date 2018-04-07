@@ -30,6 +30,7 @@ Route::get('/', "\App\Http\Controllers\LoginController@index");
 
     // 个人主页
     Route::post('/user/leafSnap', '\App\Http\Controllers\UserController@leaf');
+    Route::post('/user/shareRes/{leafsnapRes}', '\App\Http\Controllers\UserController@shareIndex');
     Route::get('/user/{user}', '\App\Http\Controllers\UserController@show');
     Route::post('/user/{user}/fan', '\App\Http\Controllers\UserController@fan');
     Route::post('/user/{user}/unfan', '\App\Http\Controllers\UserController@unfan');
