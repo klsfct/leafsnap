@@ -126,13 +126,13 @@ class UserController extends Controller
         $bodys = array(
             'image' => $img
         );
-        $res = json_decode(request_post($url, $bodys), true);
+        $res = request_post($url, $bodys);
 
 //        $leafsnapRes = new LeafsnapRes();
         $imgUrl = asset('/storage/'. $path);
-//        $leafsnapRes->res = $res;
-        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => json_encode($res['result'], true)]);
+        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res]);
         $id = LeafsnapRes::insertGetId($params);
+        $res = json_decode($res, true);
 
         return compact('id', 'res', 'imgUrl');
     }
