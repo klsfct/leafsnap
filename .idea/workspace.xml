@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5110abd-dcf2-47ad-b638-b473a6713285" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,8 +41,8 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="678">
-              <caret line="143" column="115" selection-start-line="143" selection-start-column="115" selection-end-line="143" selection-end-column="115" />
+            <state relative-caret-position="494">
+              <caret line="147" column="98" selection-start-line="147" selection-start-column="98" selection-end-line="147" selection-end-column="98" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
               </folding>
@@ -498,12 +496,12 @@
       <workItem from="1523084716377" duration="9850000" />
       <workItem from="1523328779359" duration="4000" />
       <workItem from="1523377119202" duration="1547000" />
-      <workItem from="1523456270541" duration="655000" />
+      <workItem from="1523456270541" duration="1041000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="382256000" />
+    <option name="totallyTimeSpent" value="382642000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -523,9 +521,9 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49755502" weight="0.3277487" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.495182" weight="0.2921466" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.495182" visible="true" weight="0.2921466" />
       <window_info anchor="right" id="Remote Host" order="4" weight="0.28624734" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49186993" visible="true" weight="0.14293362" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49186993" visible="true" weight="0.14293362" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -935,8 +933,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="143" column="115" selection-start-line="143" selection-start-column="115" selection-end-line="143" selection-end-column="115" />
+        <state relative-caret-position="494">
+          <caret line="147" column="98" selection-start-line="147" selection-start-column="98" selection-end-line="147" selection-end-column="98" />
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>
