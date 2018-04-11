@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c5110abd-dcf2-47ad-b638-b473a6713285" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,8 +43,8 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="129" selection-start-line="129" selection-end-line="129" />
+            <state relative-caret-position="678">
+              <caret line="143" column="115" selection-start-line="143" selection-start-column="115" selection-end-line="143" selection-end-column="115" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
               </folding>
@@ -70,15 +72,6 @@
               <folding>
                 <element signature="e#23#38#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="2018_04_07_175902_create_leafsnapRes_table.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -178,8 +171,8 @@
         <option value="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/LeafsnapRes.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
       </list>
     </option>
@@ -272,7 +265,7 @@
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1680" />
     <option name="height" value="1050" />
   </component>
@@ -504,11 +497,13 @@
       <workItem from="1522772148745" duration="1621000" />
       <workItem from="1523084716377" duration="9850000" />
       <workItem from="1523328779359" duration="4000" />
+      <workItem from="1523377119202" duration="1547000" />
+      <workItem from="1523456270541" duration="655000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="380054000" />
+    <option name="totallyTimeSpent" value="382256000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,9 +523,9 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49755502" weight="0.3277487" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.495182" visible="true" weight="0.30157068" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.495182" weight="0.2921466" />
       <window_info anchor="right" id="Remote Host" order="4" weight="0.28624734" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49186993" visible="true" weight="0.16006424" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49186993" visible="true" weight="0.14293362" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -890,27 +885,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Circle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="8" column="26" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="26" />
-          <folding>
-            <element signature="e#23#38#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2017_03_26_233534_create_posts_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
           <caret line="20" column="37" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -938,10 +916,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-46">
+          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Circle.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="8" column="26" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <element signature="e#23#38#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="129" selection-start-line="129" selection-end-line="129" />
+        <state relative-caret-position="678">
+          <caret line="143" column="115" selection-start-line="143" selection-start-column="115" selection-end-line="143" selection-end-column="115" />
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>

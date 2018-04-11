@@ -83,9 +83,11 @@ class UserController extends Controller
 
 
     public function leaf(Request $request){
+        $time_request = time();
 
         $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
 //        return asset('/storage/'. $path);
+        $time_store = time() - $time_request;
 
 
         function request_post($url = '', $param = '') {
@@ -119,14 +121,19 @@ class UserController extends Controller
         $post_data = substr($o,0,-1);
 
         $res = request_post($url, $post_data);
+        $time_baidu1 = time() - $time_store;
+
+
         $token = json_decode($res, true)['access_token'];
         $url = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token=' . $token;
         $img = file_get_contents(asset('/storage/'. $path));
         $img = base64_encode($img);
+        $time_base64 = time() - $time_baidu1;
         $bodys = array(
             'image' => $img
         );
         $res = request_post($url, $bodys);
+        $time_baidu2 = time() - $time_base64;
 
 //        $leafsnapRes = new LeafsnapRes();
         $imgUrl = asset('/storage/'. $path);
@@ -134,7 +141,7 @@ class UserController extends Controller
         $id = LeafsnapRes::insertGetId($params);
         $res = json_decode($res, true);
 
-        return compact('id', 'res', 'imgUrl');
+        return compact('id', 'res', 'imgUrl', 'time_request', 'time_store','time_base64','time_baidu1','time_baidu2');
     }
 
     public function shareIndex(LeafsnapRes $leafsnapRes){

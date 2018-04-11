@@ -16,7 +16,6 @@ class CreateLeafsnapResTable extends Migration
         //
         Schema::create('leafsnapRes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('log_id');
             $table->string('imgUrl');
             $table->text('result');
             $table->timestamps();
