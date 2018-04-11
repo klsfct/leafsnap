@@ -146,7 +146,7 @@ class UserController extends Controller
         $time_base64 = $time_base64 - $time_request;
         $time_baidu2 = $time_baidu2 - $time_request;
         $time_end = time() - $time_request;
-        return compact('id', 'res', 'imgUrl', 'time_request', 'time_store','time_baidu1','time_base64','time_baidu2');
+        return compact('id', 'res', 'imgUrl', 'time_request', 'time_store','time_baidu1','time_base64','time_baidu2','time_end');
     }
 
     public function shareIndex(LeafsnapRes $leafsnapRes){
