@@ -41,8 +41,8 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="147" column="98" selection-start-line="147" selection-start-column="98" selection-end-line="147" selection-end-column="98" />
+            <state relative-caret-position="543">
+              <caret line="147" column="43" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
               </folding>
@@ -496,12 +496,12 @@
       <workItem from="1523084716377" duration="9850000" />
       <workItem from="1523328779359" duration="4000" />
       <workItem from="1523377119202" duration="1547000" />
-      <workItem from="1523456270541" duration="1041000" />
+      <workItem from="1523456270541" duration="1620000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="382642000" />
+    <option name="totallyTimeSpent" value="383221000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -933,8 +933,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="147" column="98" selection-start-line="147" selection-start-column="98" selection-end-line="147" selection-end-column="98" />
+        <state relative-caret-position="543">
+          <caret line="147" column="43" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>

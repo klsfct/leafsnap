@@ -145,6 +145,7 @@ class UserController extends Controller
         $time_baidu1 = $time_baidu1 - $time_request;
         $time_base64 = $time_base64 - $time_request;
         $time_baidu2 = $time_baidu2 - $time_request;
+        $time_end = time() - $time_request;
         return compact('id', 'res', 'imgUrl', 'time_request', 'time_store','time_baidu1','time_base64','time_baidu2');
     }
 
