@@ -135,7 +135,6 @@ class UserController extends Controller
         $res = request_post($url, $bodys);
         $time_baidu2 = time();
 
-//        $leafsnapRes = new LeafsnapRes();
         $imgUrl = asset('/storage/'. $path);
         $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res]);
         $id = LeafsnapRes::insertGetId($params);
@@ -152,5 +151,20 @@ class UserController extends Controller
     public function shareIndex(LeafsnapRes $leafsnapRes){
         $leafsnapRes = LeafsnapRes::find($leafsnapRes->id);
         return compact('leafsnapRes');
+    }
+
+    public function searchBySolr(Request $request){
+        $postData = "str=柳树&type=name";
+        $postUrl = curl_init('http://124.205.250.31/lyportal/solr/solrList');
+        $curl = curl_init();//初始化curl
+        curl_setopt($curl, CURLOPT_URL,$postUrl);//抓取指定网页
+        curl_setopt($curl, CURLOPT_HEADER, 0);//设置header
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
+        curl_setopt($curl, CURLOPT_POST, 1);//post提交方式
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
+        $resData = curl_exec($curl);//运行curl
+        curl_close($curl);
+
+        return $resData;
     }
 }
