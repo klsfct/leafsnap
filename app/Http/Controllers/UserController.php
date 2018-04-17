@@ -165,6 +165,6 @@ class UserController extends Controller
         $resData = curl_exec($curl);//运行curl
         curl_close($curl);
 
-        return $resData;
+        return compact('resData');
     }
 }

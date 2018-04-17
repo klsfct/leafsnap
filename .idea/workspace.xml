@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5110abd-dcf2-47ad-b638-b473a6713285" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,20 +29,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="421">
-              <caret line="33" column="88" selection-start-line="33" selection-start-column="88" selection-end-line="33" selection-end-column="88" />
+              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="155" column="20" lean-forward="true" selection-start-line="155" selection-start-column="20" selection-end-line="155" selection-end-column="32" />
+            <state relative-caret-position="399">
+              <caret line="167" column="32" selection-start-line="167" selection-start-column="32" selection-end-line="167" selection-end-column="32" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
               </folding>
@@ -181,8 +179,8 @@
         <option value="$PROJECT_DIR$/app/LeafsnapRes.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_04_07_175902_create_leafsnapRes_table.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
       </list>
     </option>
   </component>
@@ -508,12 +506,12 @@
       <workItem from="1523328779359" duration="4000" />
       <workItem from="1523377119202" duration="1547000" />
       <workItem from="1523456270541" duration="2676000" />
-      <workItem from="1523966992503" duration="948000" />
+      <workItem from="1523966992503" duration="1152000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="385225000" />
+    <option name="totallyTimeSpent" value="385429000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -533,9 +531,9 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49755502" weight="0.3277487" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.495182" weight="0.30125523" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.495182" visible="true" weight="0.30052355" />
       <window_info anchor="right" id="Remote Host" order="4" weight="0.28624734" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49186993" visible="true" weight="0.15899357" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49186993" visible="true" weight="0.15899357" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -936,20 +934,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="155" column="20" lean-forward="true" selection-start-line="155" selection-start-column="20" selection-end-line="155" selection-end-column="32" />
-          <folding>
-            <element signature="e#40#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
-          <caret line="33" column="88" selection-start-line="33" selection-start-column="88" selection-end-line="33" selection-end-column="88" />
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="167" column="32" selection-start-line="167" selection-start-column="32" selection-end-line="167" selection-end-column="32" />
+          <folding>
+            <element signature="e#40#55#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
