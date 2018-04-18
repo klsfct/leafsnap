@@ -154,17 +154,32 @@ class UserController extends Controller
     }
 
     public function searchBySolr(Request $request){
-        $postData = "str=柳树&type=name";
-//        $postUrl = curl_init('http://124.205.250.31/lyportal/solr/solrList');
-//        $curl = curl_init();//初始化curl
-//        curl_setopt($curl, CURLOPT_URL,$postUrl);//抓取指定网页
-//        curl_setopt($curl, CURLOPT_HEADER, 0);//设置header
-//        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
-//        curl_setopt($curl, CURLOPT_POST, 1);//post提交方式
-//        curl_setopt($curl, CURLOPT_POSTFIELDS, $postData);
-//        $resData = curl_exec($curl);//运行curl
-//        curl_close($curl);
+        $postData = "strs=".request('strs')."&type=name";
+        $postUrl = 'http://124.205.250.31/lyportal/solr/solrList';
+        $postCurl = curl_init();//初始化curl
+        curl_setopt($postCurl, CURLOPT_URL,$postUrl);//抓取指定网页
+        curl_setopt($postCurl, CURLOPT_HEADER, 0);//设置header
+        curl_setopt($postCurl, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
+        curl_setopt($postCurl, CURLOPT_POST, 1);//post提交方式
+        curl_setopt($postCurl, CURLOPT_POSTFIELDS, $postData);
+        $zhikuRes = curl_exec($postCurl);//运行curl
+        curl_close($postCurl);
 
-        return compact('postData');
+//        $getUrl = 'https://baike.baidu.com/item/'.request('strs');
+        $getUrl = 'http://zhishi.me/api/entity/'.request('strs').'?baike=baidubaike';
+        $getCurl = curl_init();
+        curl_setopt($getCurl, CURLOPT_URL,$getUrl);//抓取指定网页
+        curl_setopt($getCurl, CURLOPT_HEADER, false);
+        curl_setopt($getCurl, CURLOPT_RETURNTRANSFER,true);
+        $getRes = json_decode(curl_exec($getCurl), true);
+        curl_close($getCurl);
+        if(array_key_exists('abstracts', $getRes)){
+            $baikeParams = array_merge(['abstracts' => $getRes['abstracts']],['imageUrl' => $getRes['relatedImage'][0]]);
+        } else if(array_key_exists('pageDisambiguates', $getRes)){
+            $baikeParams = $getRes['pageDisambiguates'];
+        } else {
+            $baikeParams = $getRes;
+        }
+        return compact('baikeParams', 'zhikuRes');
     }
 }

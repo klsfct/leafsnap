@@ -29,12 +29,12 @@ Route::get('/', "\App\Http\Controllers\LoginController@index");
     Route::get('/posts/{post}/unzan', '\App\Http\Controllers\PostController@unzan');
 
     // 个人主页
-    Route::post('/user/searchBySolr', '\App\Http\Controllers\UserController@searchBySolr');
-    Route::get('/user/shareRes/{leafsnapRes}', '\App\Http\Controllers\UserController@shareIndex');
-    Route::post('/user/leafSnap', '\App\Http\Controllers\UserController@leaf');
-    Route::get('/user/{user}', '\App\Http\Controllers\UserController@show');
+    Route::get('/searchBySolr', '\App\Http\Controllers\UserController@searchBySolr');
+    Route::post('/leafSnap', '\App\Http\Controllers\UserController@leaf');
+    Route::get('/user/{user}', '\App\Http\Controllers\UserController@show')->where('user', '[0-9]+');
     Route::post('/user/{user}/fan', '\App\Http\Controllers\UserController@fan');
     Route::post('/user/{user}/unfan', '\App\Http\Controllers\UserController@unfan');
+    Route::get('/user/shareRes/{leafsnapRes}', '\App\Http\Controllers\UserController@shareIndex');
 
     //多态
 //    Route::get('/user/{user}/rel','\App\Http\Controllers\ZanController@zan');
