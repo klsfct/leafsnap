@@ -31,10 +31,10 @@ Route::get('/', "\App\Http\Controllers\LoginController@index");
     // 个人主页
     Route::get('/searchBySolr', '\App\Http\Controllers\UserController@searchBySolr');
     Route::post('/leafSnap', '\App\Http\Controllers\UserController@leaf');
+    Route::get('/shareRes/{leafsnapRes}', '\App\Http\Controllers\UserController@shareIndex');
     Route::get('/user/{user}', '\App\Http\Controllers\UserController@show')->where('user', '[0-9]+');
     Route::post('/user/{user}/fan', '\App\Http\Controllers\UserController@fan');
     Route::post('/user/{user}/unfan', '\App\Http\Controllers\UserController@unfan');
-    Route::get('/user/shareRes/{leafsnapRes}', '\App\Http\Controllers\UserController@shareIndex');
 
     //多态
 //    Route::get('/user/{user}/rel','\App\Http\Controllers\ZanController@zan');

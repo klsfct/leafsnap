@@ -162,7 +162,7 @@ class UserController extends Controller
         curl_setopt($postCurl, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
         curl_setopt($postCurl, CURLOPT_POST, 1);//post提交方式
         curl_setopt($postCurl, CURLOPT_POSTFIELDS, $postData);
-        $zhikuRes = curl_exec($postCurl);//运行curl
+        $zhikuParams = curl_exec($postCurl);//运行curl
         curl_close($postCurl);
 
 //        $getUrl = 'https://baike.baidu.com/item/'.request('strs');
@@ -180,6 +180,6 @@ class UserController extends Controller
         } else {
             $baikeParams = $getRes;
         }
-        return compact('baikeParams', 'zhikuRes');
+        return compact('baikeParams', 'zhikuParams');
     }
 }
