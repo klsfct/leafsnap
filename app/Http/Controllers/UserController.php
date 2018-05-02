@@ -126,7 +126,8 @@ class UserController extends Controller
 
         $token = json_decode($res, true)['access_token'];
         $url = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token=' . $token;
-        $img = file_get_contents(asset('/storage/'. $path));
+//        $img = file_get_contents(asset('/storage/'. $path));
+        $img = file_get_contents('https://sh.cfpheks.com/storage/27bc04ef8ce80ea5aee24827a3af5691/MeayZ3pgWbeWViGd7xrdofVl4MeZSeH0U9L3QHtT.png');
         $img = base64_encode($img);
         $time_base64 = time();
         $bodys = array(
@@ -154,30 +155,49 @@ class UserController extends Controller
     }
 
     public function searchBySolr(Request $request){
+        function request_get($url = '',$param = '') {
+            if (empty($url)) {
+                return false;
+            }
+
+            $getUrl = $url;
+            $getCurl = curl_init();//初始化curl
+            curl_setopt($getCurl, CURLOPT_URL,$getUrl);//抓取指定网页
+            curl_setopt($getCurl, CURLOPT_HEADER, false);
+            curl_setopt($getCurl, CURLOPT_RETURNTRANSFER,true);
+            if(!empty($param)){
+                curl_setopt($getCurl, CURLOPT_POST, 1);//如果存在param则采用post提交方式
+                curl_setopt($getCurl, CURLOPT_POSTFIELDS, $param);
+            }
+            $data = curl_exec($getCurl);//运行curl
+            curl_close($getCurl);
+
+            return $data;
+        }
         $postData = "strs=".request('strs')."&type=name";
         $postUrl = 'http://124.205.250.31/lyportal/solr/solrList';
-        $postCurl = curl_init();//初始化curl
-        curl_setopt($postCurl, CURLOPT_URL,$postUrl);//抓取指定网页
-        curl_setopt($postCurl, CURLOPT_HEADER, 0);//设置header
-        curl_setopt($postCurl, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
-        curl_setopt($postCurl, CURLOPT_POST, 1);//post提交方式
-        curl_setopt($postCurl, CURLOPT_POSTFIELDS, $postData);
-        $zhikuParams = curl_exec($postCurl);//运行curl
-        curl_close($postCurl);
+        $zhikuParams = request_get($postUrl, $postData);//运行curl
 
-//        $getUrl = 'https://baike.baidu.com/item/'.request('strs');
         $getUrl = 'http://zhishi.me/api/entity/'.request('strs').'?baike=baidubaike';
-        $getCurl = curl_init();
-        curl_setopt($getCurl, CURLOPT_URL,$getUrl);//抓取指定网页
-        curl_setopt($getCurl, CURLOPT_HEADER, false);
-        curl_setopt($getCurl, CURLOPT_RETURNTRANSFER,true);
-        $getRes = json_decode(curl_exec($getCurl), true);
-        curl_close($getCurl);
-        if(array_key_exists('abstracts', $getRes)){
-            $baikeParams = array_merge(['abstracts' => $getRes['abstracts']],['imageUrl' => $getRes['relatedImage'][0]]);
+        $getRes = json_decode(request_get($getUrl), true);
+
+        $baikeParams = array();
+        if(empty($getRes)){
+            $baikeParams = null;
+        }
+        else if(array_key_exists('abstracts', $getRes)){
+            $baikeParams = array('abstracts' => $getRes['abstracts'],'imageUrl' => $getRes['relatedImage'][0]);
         } else if(array_key_exists('pageDisambiguates', $getRes)){
-            $baikeParams = $getRes['pageDisambiguates'];
-        } else {
+            foreach ($getRes['pageDisambiguates'] as $page){
+                $page = json_decode(request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
+                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
+            }
+        } else if(array_key_exists('pageRedirects', $getRes)){
+            foreach ($getRes['pageRedirects'] as $page){
+                $page = json_decode(request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
+                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
+            }
+        } else{
             $baikeParams = $getRes;
         }
         return compact('baikeParams', 'zhikuParams');
