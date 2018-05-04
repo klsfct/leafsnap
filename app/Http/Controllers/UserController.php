@@ -80,71 +80,27 @@ class UserController extends Controller
         return back();
     }
 
+//
+//    public function request_post($url = '', $param = '') {
+//            if (empty($url) || empty($param)) {
+//                return false;
+//            }
+//
+//            $postUrl = $url;
+//            $curlPost = $param;
+//            $curl = curl_init();//初始化curl
+//            curl_setopt($curl, CURLOPT_URL,$postUrl);//抓取指定网页
+//            curl_setopt($curl, CURLOPT_HEADER, 0);//设置header
+//            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
+//            curl_setopt($curl, CURLOPT_POST, 1);//post提交方式
+//            curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPost);
+//            $data = curl_exec($curl);//运行curl
+//            curl_close($curl);
+//
+//            return $data;
+//    }
 
-    public function request_post($url = '', $param = '') {
-            if (empty($url) || empty($param)) {
-                return false;
-            }
-
-            $postUrl = $url;
-            $curlPost = $param;
-            $curl = curl_init();//初始化curl
-            curl_setopt($curl, CURLOPT_URL,$postUrl);//抓取指定网页
-            curl_setopt($curl, CURLOPT_HEADER, 0);//设置header
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);//要求结果为字符串且输出到屏幕上
-            curl_setopt($curl, CURLOPT_POST, 1);//post提交方式
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPost);
-            $data = curl_exec($curl);//运行curl
-            curl_close($curl);
-
-            return $data;
-    }
-
-    public function leaf(Request $request){
-
-        $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
-//        return asset('/storage/'. $path);
-
-
-
-        $url = 'https://aip.baidubce.com/oauth/2.0/token';
-        $post_data['grant_type']       = 'client_credentials';
-        $post_data['client_id']      = env('BAIDU_KEY');
-        $post_data['client_secret'] = env('BAIDU_SECRET');
-        $o = "";
-        foreach ( $post_data as $k => $v )
-        {
-            $o.= "$k=" . urlencode( $v ). "&" ;
-        }
-        $post_data = substr($o,0,-1);
-
-        $res = $this->request_post($url, $post_data);
-
-
-        $token = json_decode($res, true)['access_token'];
-        $url = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token=' . $token;
-        $img = file_get_contents(asset('/storage/'. $path));
-        $img = base64_encode($img);
-        $bodys = array(
-            'image' => $img
-        );
-        $res = $this->request_post($url, $bodys);
-
-        $imgUrl = asset('/storage/'. $path);
-        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res]);
-        $id = LeafsnapRes::insertGetId($params);
-        $res = json_decode($res, true);
-
-        return compact('id', 'res', 'imgUrl');
-    }
-
-    public function shareIndex(LeafsnapRes $leafsnapRes){
-        $leafsnapRes = LeafsnapRes::find($leafsnapRes->id);
-        return compact('leafsnapRes');
-    }
-
-    public function searchBySolr(Request $request){
-        function request_get($url = '',$param = '') {
+    public function request_get($url = '',$param = '') {
             if (empty($url)) {
                 return false;
             }
@@ -163,12 +119,56 @@ class UserController extends Controller
 
             return $data;
         }
+    public function leaf(Request $request){
+
+        $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
+//        return asset('/storage/'. $path);
+
+
+
+        $url = 'https://aip.baidubce.com/oauth/2.0/token';
+        $post_data['grant_type']       = 'client_credentials';
+        $post_data['client_id']      = env('BAIDU_KEY');
+        $post_data['client_secret'] = env('BAIDU_SECRET');
+        $o = "";
+        foreach ( $post_data as $k => $v )
+        {
+            $o.= "$k=" . urlencode( $v ). "&" ;
+        }
+        $post_data = substr($o,0,-1);
+
+        $res = $this->request_get($url, $post_data);
+
+
+        $token = json_decode($res, true)['access_token'];
+        $url = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token=' . $token;
+        $img = file_get_contents(asset('/storage/'. $path));
+        $img = base64_encode($img);
+        $bodys = array(
+            'image' => $img
+        );
+        $res = $this->request_get($url, $bodys);
+
+        $imgUrl = asset('/storage/'. $path);
+        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res]);
+        $id = LeafsnapRes::insertGetId($params);
+        $res = json_decode($res, true);
+
+        return compact('id', 'res', 'imgUrl');
+    }
+
+    public function shareIndex(LeafsnapRes $leafsnapRes){
+        $leafsnapRes = LeafsnapRes::find($leafsnapRes->id);
+        return compact('leafsnapRes');
+    }
+
+    public function searchBySolr(Request $request){
         $postData = "strs=".request('strs')."&type=name";
         $postUrl = 'http://124.205.250.31/lyportal/solr/solrList';
-        $zhikuParams = request_get($postUrl, $postData);//运行curl
+        $zhikuParams = $this->request_get($postUrl, $postData);//运行curl
 
         $getUrl = 'http://zhishi.me/api/entity/'.request('strs').'?baike=baidubaike';
-        $getRes = json_decode(request_get($getUrl), true);
+        $getRes = json_decode($this->request_get($getUrl), true);
 
         $baikeParams = array();
         if(empty($getRes)){
@@ -178,12 +178,12 @@ class UserController extends Controller
             $baikeParams = array('abstracts' => $getRes['abstracts'],'imageUrl' => $getRes['relatedImage'][0]);
         } else if(array_key_exists('pageDisambiguates', $getRes)){
             foreach ($getRes['pageDisambiguates'] as $page){
-                $page = json_decode(request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
+                $page = json_decode($this->request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
                 array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
             }
         } else if(array_key_exists('pageRedirects', $getRes)){
             foreach ($getRes['pageRedirects'] as $page){
-                $page = json_decode(request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
+                $page = json_decode($this->request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
                 array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
             }
         } else{
