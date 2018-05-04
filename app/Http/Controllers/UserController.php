@@ -126,8 +126,8 @@ class UserController extends Controller
 
         $token = json_decode($res, true)['access_token'];
         $url = 'https://aip.baidubce.com/rest/2.0/image-classify/v1/plant?access_token=' . $token;
-        $img = file_get_contents(asset('/storage/'. $path));
-//        $img = file_get_contents('https://sh.cfpheks.com/storage/27bc04ef8ce80ea5aee24827a3af5691/MeayZ3pgWbeWViGd7xrdofVl4MeZSeH0U9L3QHtT.png');
+//        $img = file_get_contents(asset('/storage/'. $path));
+        $img = file_get_contents('https://sh.cfpheks.com/storage/27bc04ef8ce80ea5aee24827a3af5691/MeayZ3pgWbeWViGd7xrdofVl4MeZSeH0U9L3QHtT.png');
         $img = base64_encode($img);
         $time_base64 = time();
         $bodys = array(
