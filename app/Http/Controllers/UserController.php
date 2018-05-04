@@ -139,14 +139,16 @@ class UserController extends Controller
         $imgUrl = asset('/storage/'. $path);
         $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res]);
         $id = LeafsnapRes::insertGetId($params);
-        $time_end = time() - $time_request;
+        $time_bfDecode = time();
         $res = json_decode($res, true);
 
         $time_store = $time_store - $time_request;
         $time_baidu1 = $time_baidu1 - $time_request;
         $time_base64 = $time_base64 - $time_request;
         $time_baidu2 = $time_baidu2 - $time_request;
-        return compact('id', 'res', 'imgUrl', 'time_request', 'time_store','time_baidu1','time_base64','time_baidu2','time_end');
+        $time_bfDecode = $time_bfDecode - $time_request;
+        $time_end = time() - $time_request;
+        return compact('id', 'res', 'imgUrl', 'time_request', 'time_store','time_baidu1','time_base64','time_baidu2','time_bfDecode','time_end');
     }
 
     public function shareIndex(LeafsnapRes $leafsnapRes){
