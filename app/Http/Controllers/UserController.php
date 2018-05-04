@@ -81,14 +81,7 @@ class UserController extends Controller
     }
 
 
-
-    public function leaf(Request $request){
-
-        $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
-//        return asset('/storage/'. $path);
-
-
-        function request_post($url = '', $param = '') {
+    public function request_post($url = '', $param = '') {
             if (empty($url) || empty($param)) {
                 return false;
             }
@@ -105,7 +98,14 @@ class UserController extends Controller
             curl_close($curl);
 
             return $data;
-        }
+    }
+
+    public function leaf(Request $request){
+
+        $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
+//        return asset('/storage/'. $path);
+
+
 
         $url = 'https://aip.baidubce.com/oauth/2.0/token';
         $post_data['grant_type']       = 'client_credentials';
@@ -118,7 +118,7 @@ class UserController extends Controller
         }
         $post_data = substr($o,0,-1);
 
-        $res = request_post($url, $post_data);
+        $res = $this->request_post($url, $post_data);
 
 
         $token = json_decode($res, true)['access_token'];
@@ -128,7 +128,7 @@ class UserController extends Controller
         $bodys = array(
             'image' => $img
         );
-        $res = request_post($url, $bodys);
+        $res = $this->request_post($url, $bodys);
 
         $imgUrl = asset('/storage/'. $path);
         $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res]);
