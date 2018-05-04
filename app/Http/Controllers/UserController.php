@@ -137,9 +137,9 @@ class UserController extends Controller
         $time_baidu2 = time();
 
         $imgUrl = asset('/storage/'. $path);
-        $time_end = time() - $time_request;
         $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res]);
         $id = LeafsnapRes::insertGetId($params);
+        $time_end = time() - $time_request;
         $res = json_decode($res, true);
 
         $time_store = $time_store - $time_request;
