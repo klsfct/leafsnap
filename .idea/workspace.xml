@@ -41,8 +41,8 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="182" column="175" selection-start-line="182" selection-start-column="175" selection-end-line="182" selection-end-column="175" />
+            <state relative-caret-position="319">
+              <caret line="185" column="39" selection-start-line="185" selection-start-column="39" selection-end-line="185" selection-end-column="39" />
               <folding>
                 <element signature="e#40#55#0#PHP" expanded="true" />
               </folding>
@@ -505,12 +505,12 @@
       <workItem from="1524377282649" duration="8361000" />
       <workItem from="1525223277938" duration="678000" />
       <workItem from="1525354437432" duration="754000" />
-      <workItem from="1525407355990" duration="5228000" />
+      <workItem from="1525407355990" duration="6288000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="410037000" />
+    <option name="totallyTimeSpent" value="411097000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -530,7 +530,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49755502" weight="0.3277487" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" sideWeight="0.495182" visible="true" weight="0.4227027" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.495182" weight="0.4227027" />
       <window_info anchor="right" id="Remote Host" order="4" weight="0.28586724" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49186993" visible="true" weight="0.14434889" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
@@ -942,8 +942,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="182" column="175" selection-start-line="182" selection-start-column="175" selection-end-line="182" selection-end-column="175" />
+        <state relative-caret-position="319">
+          <caret line="185" column="39" selection-start-line="185" selection-start-column="39" selection-end-line="185" selection-end-column="39" />
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>

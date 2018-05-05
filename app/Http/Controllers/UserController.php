@@ -80,7 +80,6 @@ class UserController extends Controller
         return back();
     }
 
-//
 //    public function request_post($url = '', $param = '') {
 //            if (empty($url) || empty($param)) {
 //                return false;
@@ -120,6 +119,7 @@ class UserController extends Controller
 
         return $data;
     }
+
     public function searchBySolr($strs = ''){
         $postData = "strs=".$strs."&type=name";
         $postUrl = 'http://124.205.250.31/lyportal/solr/solrList';
@@ -149,6 +149,7 @@ class UserController extends Controller
         }
         return compact('baikeParams', 'zhikuParams');
     }
+
     public function leaf(Request $request){
 
         $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
@@ -184,6 +185,9 @@ class UserController extends Controller
         $id = LeafsnapRes::insertGetId($params);
         $res = json_decode($res, true);
 
+        foreach ($res['result'] as &$plant){
+            $plant['desList'] = $this->searchBySolr($plant['name']);
+        }
         return compact('id', 'res', 'imgUrl');
     }
 
