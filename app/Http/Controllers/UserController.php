@@ -180,7 +180,7 @@ class UserController extends Controller
         $res = $this->request_get($url, $bodys);
 
         $imgUrl = asset('/storage/'. $path);
-        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res],['created_at' => time()],['updated_at' => time()]);
+        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res],['created_at' => date("Y-m-d H:i:s",time())],['updated_at' => date("Y-m-d H:i:s",time())]);
         $id = LeafsnapRes::insertGetId($params);
         $res = json_decode($res, true);
 
