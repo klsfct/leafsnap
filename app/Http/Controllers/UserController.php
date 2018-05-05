@@ -121,9 +121,9 @@ class UserController extends Controller
     }
 
     public function searchBySolr($strs = ''){
-        $postData = "strs=".$strs."&type=name";
-        $postUrl = 'http://124.205.250.31/lyportal/solr/solrList';
-        $zhikuParams = $this->request_get($postUrl, $postData);//运行curl
+//        $postData = "strs=".$strs."&type=name";
+//        $postUrl = 'http://124.205.250.31/lyportal/solr/solrList';
+//        $zhikuParams = $this->request_get($postUrl, $postData);//运行curl
 
         $getUrl = 'http://zhishi.me/api/entity/'.$strs.'?baike=baidubaike';
         $getRes = json_decode($this->request_get($getUrl), true);
@@ -147,7 +147,7 @@ class UserController extends Controller
         } else{
             $baikeParams = $getRes;
         }
-        return compact('baikeParams', 'zhikuParams');
+        return $baikeParams;
     }
 
     public function leaf(Request $request){
