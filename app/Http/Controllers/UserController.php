@@ -187,7 +187,7 @@ class UserController extends Controller
 
         foreach ($res['result'] as &$plant){
 //            $plant['desList'] = $this->searchBySolr($plant['name']);
-            $plant['name'] = '111';
+            $plant = '111';
         }
 
         return compact('id', 'res', 'imgUrl');
