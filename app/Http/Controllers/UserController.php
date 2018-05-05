@@ -186,7 +186,8 @@ class UserController extends Controller
         $res = json_decode($res, true);
 
         foreach ($res['result'] as &$plant){
-            $plant['desList'] = $this->searchBySolr($plant['name']);
+//            $plant['desList'] = $this->searchBySolr($plant['name']);
+            $plant['desList'] = '111';
         }
         return compact('id', 'res', 'imgUrl');
     }
