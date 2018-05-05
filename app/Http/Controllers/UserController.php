@@ -100,25 +100,55 @@ class UserController extends Controller
 //            return $data;
 //    }
 
-    public function request_get($url = '',$param = '') {
-            if (empty($url)) {
-                return false;
-            }
-
-            $getUrl = $url;
-            $getCurl = curl_init();//初始化curl
-            curl_setopt($getCurl, CURLOPT_URL,$getUrl);//抓取指定网页
-            curl_setopt($getCurl, CURLOPT_HEADER, false);
-            curl_setopt($getCurl, CURLOPT_RETURNTRANSFER,true);
-            if(!empty($param)){
-                curl_setopt($getCurl, CURLOPT_POST, 1);//如果存在param则采用post提交方式
-                curl_setopt($getCurl, CURLOPT_POSTFIELDS, $param);
-            }
-            $data = curl_exec($getCurl);//运行curl
-            curl_close($getCurl);
-
-            return $data;
+    public function request_get($url = '',$param = '')
+    {
+        if (empty($url)) {
+            return false;
         }
+
+        $getUrl = $url;
+        $getCurl = curl_init();//初始化curl
+        curl_setopt($getCurl, CURLOPT_URL, $getUrl);//抓取指定网页
+        curl_setopt($getCurl, CURLOPT_HEADER, false);
+        curl_setopt($getCurl, CURLOPT_RETURNTRANSFER, true);
+        if (!empty($param)) {
+            curl_setopt($getCurl, CURLOPT_POST, 1);//如果存在param则采用post提交方式
+            curl_setopt($getCurl, CURLOPT_POSTFIELDS, $param);
+        }
+        $data = curl_exec($getCurl);//运行curl
+        curl_close($getCurl);
+
+        return $data;
+    }
+    public function searchBySolr($strs = ''){
+        $postData = "strs=".$strs."&type=name";
+        $postUrl = 'http://124.205.250.31/lyportal/solr/solrList';
+        $zhikuParams = $this->request_get($postUrl, $postData);//运行curl
+
+        $getUrl = 'http://zhishi.me/api/entity/'.$strs.'?baike=baidubaike';
+        $getRes = json_decode($this->request_get($getUrl), true);
+
+        $baikeParams = array();
+        if(empty($getRes)){
+            $baikeParams = null;
+        }
+        else if(array_key_exists('abstracts', $getRes)){
+            $baikeParams = array('abstracts' => $getRes['abstracts'],'imageUrl' => $getRes['relatedImage'][0]);
+        } else if(array_key_exists('pageDisambiguates', $getRes)){
+            foreach ($getRes['pageDisambiguates'] as $page){
+                $page = json_decode($this->request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
+                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
+            }
+        } else if(array_key_exists('pageRedirects', $getRes)){
+            foreach ($getRes['pageRedirects'] as $page){
+                $page = json_decode($this->request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
+                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
+            }
+        } else{
+            $baikeParams = $getRes;
+        }
+        return compact('baikeParams', 'zhikuParams');
+    }
     public function leaf(Request $request){
 
         $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
@@ -150,7 +180,7 @@ class UserController extends Controller
         $res = $this->request_get($url, $bodys);
 
         $imgUrl = asset('/storage/'. $path);
-        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res]);
+        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res],['create_at' => time()],['update_at' => time()]);
         $id = LeafsnapRes::insertGetId($params);
         $res = json_decode($res, true);
 
@@ -162,33 +192,4 @@ class UserController extends Controller
         return compact('leafsnapRes');
     }
 
-    public function searchBySolr(Request $request){
-        $postData = "strs=".request('strs')."&type=name";
-        $postUrl = 'http://124.205.250.31/lyportal/solr/solrList';
-        $zhikuParams = $this->request_get($postUrl, $postData);//运行curl
-
-        $getUrl = 'http://zhishi.me/api/entity/'.request('strs').'?baike=baidubaike';
-        $getRes = json_decode($this->request_get($getUrl), true);
-
-        $baikeParams = array();
-        if(empty($getRes)){
-            $baikeParams = null;
-        }
-        else if(array_key_exists('abstracts', $getRes)){
-            $baikeParams = array('abstracts' => $getRes['abstracts'],'imageUrl' => $getRes['relatedImage'][0]);
-        } else if(array_key_exists('pageDisambiguates', $getRes)){
-            foreach ($getRes['pageDisambiguates'] as $page){
-                $page = json_decode($this->request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
-                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
-            }
-        } else if(array_key_exists('pageRedirects', $getRes)){
-            foreach ($getRes['pageRedirects'] as $page){
-                $page = json_decode($this->request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
-                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
-            }
-        } else{
-            $baikeParams = $getRes;
-        }
-        return compact('baikeParams', 'zhikuParams');
-    }
 }

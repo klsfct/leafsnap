@@ -29,7 +29,7 @@ Route::get('/', "\App\Http\Controllers\LoginController@index");
     Route::get('/posts/{post}/unzan', '\App\Http\Controllers\PostController@unzan');
 
     // 个人主页
-    Route::get('/searchBySolr', '\App\Http\Controllers\UserController@searchBySolr');
+//    Route::get('/searchBySolr', '\App\Http\Controllers\UserController@searchBySolr');
     Route::post('/leafSnap', '\App\Http\Controllers\UserController@leaf');
     Route::get('/shareRes/{leafsnapRes}', '\App\Http\Controllers\UserController@shareIndex');
     Route::get('/user/{user}', '\App\Http\Controllers\UserController@show')->where('user', '[0-9]+');
