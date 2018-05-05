@@ -185,7 +185,7 @@ class UserController extends Controller
         $id = LeafsnapRes::insertGetId($params);
         $res = json_decode($res, true);
 
-        foreach ($res['result'] as &$plant){
+        foreach ($res['result'] as $plant){
 //            $plant['desList'] = $this->searchBySolr($plant['name']);
             $plant['desList'] = '111';
         }
