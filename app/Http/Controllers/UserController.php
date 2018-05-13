@@ -153,6 +153,8 @@ class UserController extends Controller
     public function leaf(Request $request){
 
         if(!empty($request->file('file'))){
+        $params = array_merge(['res' => $request->file('file')],['created_at' => date("Y-m-d H:i:s",time())],['updated_at' => date("Y-m-d H:i:s",time())]);
+        $id = LeafsnapRes::insertGetId($params);
             $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
         }
 //        return asset('/storage/'. $path);
