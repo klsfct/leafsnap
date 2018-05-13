@@ -133,16 +133,17 @@ class UserController extends Controller
             $baikeParams = null;
         }
         else if(array_key_exists('abstracts', $getRes)){
-            $baikeParams = array('abstracts' => $getRes['abstracts'],'imageUrl' => $getRes['relatedImage'][0]);
+            $baikeParams = array('abstracts' => $getRes['abstracts'],
+                'imageUrl' => array_key_exists('relatedImage', $getRes)?$getRes['relatedImage'][0]:'');
         } else if(array_key_exists('pageDisambiguates', $getRes)){
             foreach ($getRes['pageDisambiguates'] as $page){
                 $page = json_decode($this->request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
-                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
+                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => array_key_exists('relatedImage', $page)?$page['relatedImage'][0]:''));
             }
         } else if(array_key_exists('pageRedirects', $getRes)){
             foreach ($getRes['pageRedirects'] as $page){
                 $page = json_decode($this->request_get('http://zhishi.me/api/entity/'.trim(strrchr($page, '/'),'/').'?baike=baidubaike'), true);
-                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => $page['relatedImage'][0]));
+                array_push($baikeParams, array('abstracts' => $page['abstracts'],'imageUrl' => array_key_exists('relatedImage', $page)?$page['relatedImage'][0]:''));
             }
         } else{
             $baikeParams = $getRes;
@@ -152,7 +153,7 @@ class UserController extends Controller
 
     public function leaf(Request $request){
 
-        if(!empty($request->file('file'))){
+        if($request->file('file')){
         $params = array_merge(['res' => $request->file('file')],['created_at' => date("Y-m-d H:i:s",time())],['updated_at' => date("Y-m-d H:i:s",time())]);
         $id = LeafsnapRes::insertGetId($params);
             $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
