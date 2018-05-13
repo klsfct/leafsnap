@@ -152,7 +152,9 @@ class UserController extends Controller
 
     public function leaf(Request $request){
 
-        $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
+        if(!empty($request->file('file'))){
+            $path = $request->file('file')->storePublicly(md5(\Auth::id() . time()));
+        }
 //        return asset('/storage/'. $path);
 
 
