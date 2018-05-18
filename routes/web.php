@@ -32,7 +32,7 @@ Route::get('/', "\App\Http\Controllers\LoginController@index");
 //    Route::get('/searchBySolr', '\App\Http\Controllers\UserController@searchBySolr');
     Route::post('/leafSnap', '\App\Http\Controllers\UserController@leaf');
     Route::get('/shareRes/{leafsnapRes}', '\App\Http\Controllers\UserController@shareIndex');
-    Route::get('/getLiveUrl', '\App\Http\Controllers\UserController@getUrl');
+    Route::get('/getLiveUrl', '\App\Http\Controllers\UserController@getLiveUrl');
     Route::get('/user/{user}', '\App\Http\Controllers\UserController@show')->where('user', '[0-9]+');
     Route::post('/user/{user}/fan', '\App\Http\Controllers\UserController@fan');
     Route::post('/user/{user}/unfan', '\App\Http\Controllers\UserController@unfan');
