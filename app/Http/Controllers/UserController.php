@@ -205,4 +205,10 @@ class UserController extends Controller
         return compact('leafsnapRes');
     }
 
+    public function getLiveUrl()
+    {
+        $liveUrl = env('TENCENT_LIVEURL');
+        return compact('liveUrl');
+    }
+
 }
