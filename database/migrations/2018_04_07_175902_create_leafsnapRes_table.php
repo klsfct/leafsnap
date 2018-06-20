@@ -18,6 +18,8 @@ class CreateLeafsnapResTable extends Migration
             $table->increments('id');
             $table->string('imgUrl');
             $table->text('result');
+            $table->double('longitude');
+            $table->double('latitude');
             $table->timestamps();
         });
     }

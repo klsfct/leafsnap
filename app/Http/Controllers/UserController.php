@@ -151,6 +151,7 @@ class UserController extends Controller
         return $baikeParams;
     }
 
+    //植物识别接口
     public function leaf(Request $request){
 
         if($request->file('file')){
@@ -186,7 +187,7 @@ class UserController extends Controller
         $res = $this->request_get($url, $bodys);
 
         $imgUrl = asset('/storage/'. $path);
-        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res]);
+        $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res . request('formData'),'longitude' => request('lon'),'latitude' => request('lat')]);
         $leafSnap = LeafsnapRes::find($id);
         $leafSnap->update($params);
         $res = json_decode($res, true);
@@ -205,10 +206,18 @@ class UserController extends Controller
         return compact('leafsnapRes');
     }
 
+    public function mapList(Request $request){
+        $pointList = LeafsnapRes::whereBetween('longitude', [request('lon') - request('boundary'), request('lon') + request('boundary')])->whereBetween('latitude', [request('lat') - request('boundary'), request('lat') + request('boundary')])->get();
+        return $pointList;
+    }
+
+    //直播功能
     public function getLiveUrl()
     {
         $liveUrl = env('TENCENT_LIVEURL');
         return compact('liveUrl');
     }
+
+
 
 }

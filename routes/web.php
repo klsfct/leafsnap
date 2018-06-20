@@ -31,6 +31,7 @@ Route::get('/', "\App\Http\Controllers\LoginController@index");
     // 个人主页
 //    Route::get('/searchBySolr', '\App\Http\Controllers\UserController@searchBySolr');
     Route::post('/leafSnap', '\App\Http\Controllers\UserController@leaf');
+    Route::get('/mapList', '\App\Http\Controllers\UserController@mapList');
     Route::get('/shareRes/{leafsnapRes}', '\App\Http\Controllers\UserController@shareIndex');
     Route::get('/getLiveUrl', '\App\Http\Controllers\UserController@getLiveUrl');
     Route::get('/user/{user}', '\App\Http\Controllers\UserController@show')->where('user', '[0-9]+');
