@@ -201,13 +201,38 @@ class UserController extends Controller
         return compact('id', 'res', 'imgUrl');
     }
 
+    //生成随机地理坐标
+    public function setLocation(Request $request){
+        $snapList = LeafsnapRes::all();
+        $lon_scope = 135 - 73;
+        $lat_scope = 53 - 3;
+        foreach ($snapList as $snap){
+            $lon = mt_rand(7300000, 13500000)/100000;
+            $lat = mt_rand(300000, 5300000)/100000;
+            $lon = mt_rand(11525000, 11735000)/100000;
+            $lat = mt_rand(3928000, 4105000)/100000;
+            $snap->longitude = $lon;
+            $snap->latitude = $lat;
+            $snap->update();
+        }
+    }
+
     public function shareIndex(LeafsnapRes $leafsnapRes){
         $leafsnapRes = LeafsnapRes::find($leafsnapRes->id);
         return compact('leafsnapRes');
     }
 
+    //返回地图植物识别列表
     public function mapList(Request $request){
-        $pointList = LeafsnapRes::whereBetween('longitude', [request('lon') - request('boundary'), request('lon') + request('boundary')])->whereBetween('latitude', [request('lat') - request('boundary'), request('lat') + request('boundary')])->get();
+        $MaxSize = 5;
+        $boundary = request('boundary');
+        $pointList = LeafsnapRes::
+        whereBetween('longitude', [request('lon') - $boundary, request('lon') + $boundary])
+        ->whereBetween('latitude', [request('lat') - $boundary, request('lat') + $boundary])
+            ->whereNotNull('imgUrl')
+            ->whereNotNull('res')
+            ->where('res', 'not like', '%非植物%')
+            ->get();
         return $pointList;
     }
 
@@ -217,7 +242,4 @@ class UserController extends Controller
         $liveUrl = env('TENCENT_LIVEURL');
         return compact('liveUrl');
     }
-
-
-
 }
