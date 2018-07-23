@@ -202,7 +202,7 @@ class UserController extends Controller
                 where('res', 'not like', '%非植物%')
                     ->whereNotNull('res')
                     ->where('id', '>', 19)
-                    ->random()-get();
+                    ->random()->get();
         }
 
         return compact('id', 'res', 'imgUrl');
