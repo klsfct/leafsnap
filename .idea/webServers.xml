@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="92143af4-a6e4-488e-9ffe-194921a8710c" name="tencent" url="http://115.159.196.225">
-        <fileTransfer host="115.159.196.225" port="22" rootFolder="/home/ubuntu/wwwroot/forestyle" accessType="SFTP">
+      <webServer id="9574af54-9a41-4005-8b7d-f52442c4849a" name="leafSnap_tencent" url="http://115.159.196.225">
+        <fileTransfer host="115.159.196.225" port="22" rootFolder="/home/ubuntu/wwwroot/leafsnap" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" />
           </advancedOptions>

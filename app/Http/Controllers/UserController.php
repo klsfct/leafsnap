@@ -196,6 +196,14 @@ class UserController extends Controller
             foreach ($res['result'] as &$plant) {
                 $plant['desList'] = $this->searchBySolr($plant['name']);
             }
+        } else //如果没检测出植物则从数据库中随机抓取一个其他结果
+            {
+            $randomId = LeafsnapRes::find(mt_rand(1, LeafsnapRes::count()));
+            $randomRes = LeafsnapRes::
+                where('res', 'not like', '%非植物%')
+                    ->whereNotNull('res')
+                    ->where('id', '>', 19)
+                    ->random()-get();
         }
 
         return compact('id', 'res', 'imgUrl');
