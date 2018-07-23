@@ -190,9 +190,10 @@ class UserController extends Controller
         $params = array_merge(['imgUrl' => asset('/storage/'. $path)], ['res' => $res . request('formData'),'longitude' => request('lon'),'latitude' => request('lat')]);
         $leafSnap = LeafsnapRes::find($id);
         $leafSnap->update($params);
+        $resStr = $res;
         $res = json_decode($res, true);
 
-        if(!array_key_exists('name', $res['result'])) {
+        if(!array_key_exists('name', $res['result']) && !strpos($resStr, "非植物")) {
             foreach ($res['result'] as &$plant) {
                 $plant['desList'] = $this->searchBySolr($plant['name']);
             }
@@ -202,7 +203,7 @@ class UserController extends Controller
                 where('res', 'not like', '%非植物%')
                     ->whereNotNull('res')
                     ->where('id', '>', 19)
-                    ->random()->get();
+                    ->get()->random();
         }
 
         return compact('id', 'res', 'imgUrl');
