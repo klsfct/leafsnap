@@ -198,8 +198,7 @@ class UserController extends Controller
             }
         } else //如果没检测出植物则从数据库中随机抓取一个其他结果
             {
-            $randomId = LeafsnapRes::find(mt_rand(1, LeafsnapRes::count()));
-            $randomRes = LeafsnapRes::
+            $res = LeafsnapRes::
                 where('res', 'not like', '%非植物%')
                     ->whereNotNull('res')
                     ->where('id', '>', 19)
