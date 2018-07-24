@@ -203,7 +203,12 @@ class UserController extends Controller
                 where('res', 'not like', '%非植物%')
                     ->whereNotNull('res')
                     ->where('id', '>', 19)
-                    ->get()->random();
+                    ->select('res')
+                    ->get()->random()->toArray();
+            $res = json_decode($res['res'], true);
+            foreach ($res['result'] as &$plant) {
+                    $plant['desList'] = $this->searchBySolr($plant['name']);
+                }
         }
 
         return compact('id', 'res', 'imgUrl');
